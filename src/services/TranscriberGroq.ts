@@ -20,7 +20,7 @@ export class TranscriberGroq {
         });
         logger.info(`Groq transcription response: ${JSON.stringify(response)}`);
         const noSpeechProb = (response as any).segments?.[0]?.no_speech_prob ?? 1;
-        if (noSpeechProb > 0.1) return "";
+        if (noSpeechProb > 0.2) return "";
         return response.text.trim();
     }
 }
