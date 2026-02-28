@@ -13,4 +13,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/v1', apiRoutes);
 
-app.listen(APP_PORT, () => logger.info(`Server running...`));
+app.listen(APP_PORT, () => logger.info(`Server running...`))
+  .on('error', (err) => {
+    logger.error('Failed to start server', err);
+    process.exit(1);
+  });
